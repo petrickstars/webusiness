@@ -1,0 +1,60 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 17/05/2015, 21:59:13
+    Author     : thalles
+*/
+
+.width-100 {
+    width: 100%;
+}
+
+body {
+    background: #3da9ff;
+    background: -moz-linear-gradient(top,  #3da9ff 0%, #ffffff 53%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3da9ff), color-stop(53%,#ffffff));
+    background: -webkit-linear-gradient(top,  #3da9ff 0%,#ffffff 53%);
+    background: -o-linear-gradient(top,  #3da9ff 0%,#ffffff 53%);
+    background: -ms-linear-gradient(top,  #3da9ff 0%,#ffffff 53%);
+    background: linear-gradient(to bottom,  #3da9ff 0%,#ffffff 53%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3da9ff', endColorstr='#ffffff',GradientType=0 );
+}
+
+#topnav {
+    background-color: transparent !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+#topnav ul.nav.navbar-nav {
+    float: right;
+}
+
+#topnav ul.nav.navbar-nav li.active a  {
+    color: #DF6F1C !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+img#logo {
+    display: block;
+    width: 100%;
+    max-width: 384px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+    
+    #topnav ul.nav.navbar-nav {
+        float: none;
+    }
+    
+}

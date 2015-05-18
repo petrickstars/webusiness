@@ -1,14 +1,71 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
     <h:head>
-        <title>Facelet Title</title>
+        <title>Webusiness</title>
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="assets/css/index.css" rel="stylesheet" />
     </h:head>
     <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Página de boas-vindas do Primefaces" />
+        
+        <b:container>
+            
+            <b:navBar id="topnav" brandHref="#">
+                <b:navbarLinks>
+                    <b:navLink value="PRINCIPAL" href="#" active="true"></b:navLink>
+                    <b:navLink value="ANUNCIE AQUI" href="#"></b:navLink>
+                    <b:navLink value="ÁREA DO ANUNCIANTE" href="#"></b:navLink>
+                    <b:navLink value="CONTATO" href="#${indexManager.irPara('contato')}"></b:navLink>
+                </b:navbarLinks>
+            </b:navBar>
+            
+            <img id="logo" src="assets/img/logo.png" title="Webusiness" />
+            
+            <h:form>
+                <b:row>
+                    <b:column col-xs="12" col-md="6">
+                        <b:inputText placeholder="Pesquise um serviço..." />
+                    </b:column>
+                    <b:column col-xs="12" col-md="4">
+
+                        <b:row>
+                            <b:column col-xs="4">
+                                <select class="form-control">
+                                    <option>UF</option>
+                                </select>
+                            </b:column>
+                            <b:column col-xs="8">
+                                <b:inputText placeholder="Selecione uma cidade" />
+                            </b:column>
+                        </b:row>
+
+                    </b:column>
+                    <b:column col-xs="12" col-md="2">
+                        <b:button value="Pesquisar" icon="search" styleClass="width-100"></b:button>
+                    </b:column>
+                </b:row>
+            </h:form>
+            
+            <!--
+            <ui:repeat value="#{bean.links}" var="link" varStatus="status">
+                <h:outputLink value="#{link.url}">
+                    <h:outputLabel value="#{link.name}"/>
+                </h:outputLink>
+                <h:outputText value=", " rendered="#{not status.last}"/>
+            </ui:repeat>
+            -->
+                
+        </b:container>
+        
+        <script src="assets/js/jquery-1.11.2.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/custom.js"></script>
     </h:body>
 </html>
 
