@@ -23,9 +23,7 @@ public class Categoria implements Serializable {
 
     @Id
     @GeneratedValue
-    private long id;
-    @Column(length = 30)
-    private String nome;
+    private long id;    
     private String descricao;
     @Version
     private int version;
@@ -39,15 +37,7 @@ public class Categoria implements Serializable {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    }   
 
     public String getDescricao() {
         return descricao;
