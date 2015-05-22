@@ -1,6 +1,7 @@
-package br.com.webusiness.dao;
+package br.com.webusiness.util;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -21,6 +22,10 @@ public class HibernateUtil {
 
     public static SessionFactory getSessionFactory() {
         return configureSessionFactory();
+    }
+
+    public static Session getSession() {
+        return getSessionFactory().getCurrentSession();
     }
 
 }

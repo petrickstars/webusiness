@@ -15,9 +15,9 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class IndexManager implements Serializable {
+public class IndexMB implements Serializable {
 
-    public IndexManager() {
+    public IndexMB() {
         
     }
     

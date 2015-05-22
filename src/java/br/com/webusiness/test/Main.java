@@ -5,7 +5,7 @@
  */
 package br.com.webusiness.test;
 
-import br.com.webusiness.dao.HibernateUtil;
+import br.com.webusiness.util.HibernateUtil;
 
 /**
  *
