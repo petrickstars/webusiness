@@ -7,6 +7,7 @@ package br.com.webusiness.controller;
 
 import br.com.webusiness.dao.UsuarioDAO;
 import br.com.webusiness.model.Usuario;
+import br.com.webusiness.tipos.TipoUsuario;
 import br.com.webusiness.util.HibernateUtil;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -35,12 +36,15 @@ public class AnuncianteMB implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
-    
 
     @PostConstruct
     public void init() {
+        this.limparObjetos();
+    }
+
+    private void limparObjetos() {
         this.usuario = new Usuario();
+        this.usuario.setTipoUsuario(TipoUsuario.ANUNCIANTE);
     }
 
     public void salvar() {
@@ -49,7 +53,7 @@ public class AnuncianteMB implements Serializable {
             usuarioDAO.iniciarTransacao();
             usuarioDAO.salvar(this.usuario);
             usuarioDAO.fecharTransacao();
-            this.usuario = new Usuario();
+            this.limparObjetos();
         } catch (Exception ex) {
             Logger.getLogger(AnuncianteMB.class.getName()).log(Level.SEVERE, null, ex);
         }

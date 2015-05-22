@@ -20,9 +20,10 @@
             <b:navBar id="topnav" brandHref="#">
                 <b:navbarLinks>
                     <b:navLink value="PRINCIPAL" href="#{indexMB.irPara('/faces/view/principal.xhtml')}" active="true"></b:navLink>
-                    <b:navLink value="ANUNCIE AQUI" href="#{indexMB.irPara('/faces/view/anuncie-aqui.xhtml')}"></b:navLink>
-                    <b:navLink value="ÁREA DO ANUNCIANTE" href="#{indexMB.irPara('/faces/view/area-anunciante.xhtml')}"></b:navLink>
-                    <b:navLink value="CONTATO"  href="#{indexMB.irPara('/faces/view/contato.xhtml')}"></b:navLink>
+                    <b:navLink value="ANUNCIE AQUI" rendered="#{sessionScope.logado}" href="#{indexMB.irPara('/faces/view/anuncie-aqui.xhtml')}"></b:navLink>                   
+                    <b:navLink value="CADASTRE-SE"  href="#{indexMB.irPara('/faces/view/anunciante.xhtml')}"></b:navLink>
+                    <b:navLink value="ENTRAR" rendered="#{!sessionScope.logado}"  href="#{indexMB.irPara('/faces/view/login.xhtml')}"></b:navLink>
+                    <b:navLink value="SAIR" rendered="#{sessionScope.logado}"  href="#{indexMB.logout()}"></b:navLink>
                 </b:navbarLinks>
             </b:navBar>
            

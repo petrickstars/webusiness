@@ -7,18 +7,35 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <h:form>
-            <b:row>
-               
-                <b:column col-md="8">
+        <h:form id="form">
+            <b:row>               
+                <b:column col-md="5">
                     <h:outputText value="Nome:" />
                     <b:inputText value="#{anuncianteMB.usuario.nome}"  />
-                </b:column>
-                 <b:column col-md="8">
+                </b:column>                 
+            </b:row>
+            <b:row>
+                <b:column col-md="3">
                     <h:outputText value="CPF / CNPJ:" />
                     <b:inputText value="#{anuncianteMB.usuario.cpfOuCnpj}"  />
                 </b:column>
             </b:row>
+            <b:row>
+                <b:column col-md="3">
+                    <h:outputText value="Login:" />
+                    <b:inputText value="#{anuncianteMB.usuario.login}"  />
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:column col-md="3">
+                    <h:outputText value="Senha:" />
+                    <b:inputText type="password" value="#{anuncianteMB.usuario.senha}"  />
+                </b:column>
+            </b:row>
+            <b:commandButton value="Abrir uma Conta" 
+                             update="form"
+                             ajax="true"
+                             actionListener="#{anuncianteMB.salvar()}" />
         </h:form>
     </ui:define>
 </ui:composition>

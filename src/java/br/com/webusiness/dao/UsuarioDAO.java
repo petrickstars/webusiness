@@ -6,18 +6,25 @@
 package br.com.webusiness.dao;
 
 import br.com.webusiness.model.Usuario;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
  * @author PauloH
  */
-public class UsuarioDAO extends PadraoDAO<Usuario>{
+public class UsuarioDAO extends PadraoDAO<Usuario> {
 
     public UsuarioDAO(Session sessao) {
         super(sessao);
     }
-    
-      //TODO escrever os métodos aqui
-    
+
+    public Usuario logar(String login, String senha) {
+        Criteria criteria = super.sessao.createCriteria(Usuario.class);
+        criteria.add(Restrictions.eq("login", login));
+        criteria.add(Restrictions.eq("senha", senha));
+        return (Usuario) criteria.uniqueResult();
+    }
+
 }

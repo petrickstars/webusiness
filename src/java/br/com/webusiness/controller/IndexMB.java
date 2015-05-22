@@ -15,14 +15,17 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class IndexMB implements Serializable {
+public class IndexMB extends PadraoMB implements Serializable {
 
     public IndexMB() {
-        
+
     }
-    
-    public String irPara(String pagina) {
-        return pagina;
+
+    public String logout() {
+        removeObjSessao("usuario");
+        removeObjSessao("logado");
+        invalidarSessao();
+        return "/faces/view/principal.xhtml";
     }
-    
+
 }
