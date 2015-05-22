@@ -11,7 +11,7 @@
     <!-- optional stuff -->
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
-    <property name="hibernate.hbm2ddl.auto">create</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
     <!-- mapping -->
      <mapping class="br.com.webusiness.model.Categoria"/>
      <mapping class="br.com.webusiness.model.Cidade"/>
