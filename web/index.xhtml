@@ -9,8 +9,9 @@
     
     <h:head>
         <title>Webusiness</title>
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="assets/css/index.css" rel="stylesheet" />
+        <h:outputStylesheet library="css" name="bootstrap.min.css" />
+        <h:outputStylesheet library="css" name="index.css" />
+        
     </h:head>
     <h:body>
         
@@ -18,54 +19,21 @@
             
             <b:navBar id="topnav" brandHref="#">
                 <b:navbarLinks>
-                    <b:navLink value="PRINCIPAL" href="#" active="true"></b:navLink>
-                    <b:navLink value="ANUNCIE AQUI" href="#"></b:navLink>
-                    <b:navLink value="ÁREA DO ANUNCIANTE" href="#"></b:navLink>
-                    <b:navLink value="CONTATO" href="#${indexManager.irPara('contato')}"></b:navLink>
+                    <b:navLink value="PRINCIPAL" href="#{indexManager.irPara('/faces/view/principal.xhtml')}" active="true"></b:navLink>
+                    <b:navLink value="ANUNCIE AQUI" href="#{indexManager.irPara('/faces/view/anuncie-aqui.xhtml')}"></b:navLink>
+                    <b:navLink value="ÁREA DO ANUNCIANTE" href="#{indexManager.irPara('/faces/view/area-anunciante.xhtml')}"></b:navLink>
+                    <b:navLink value="CONTATO"  href="#{indexManager.irPara('/faces/view/contato.xhtml')}"></b:navLink>
                 </b:navbarLinks>
             </b:navBar>
+           
             
-            <img id="logo" src="assets/img/logo.png" title="Webusiness" />
-            
-            <h:form>
-                <b:row>
-                    <b:column col-xs="12" col-md="6">
-                        <b:inputText placeholder="Pesquise um serviço..." />
-                    </b:column>
-                    <b:column col-xs="12" col-md="4">
-
-                        <b:row>
-                            <b:column col-xs="4">
-                                <select class="form-control">
-                                    <option>UF</option>
-                                </select>
-                            </b:column>
-                            <b:column col-xs="8">
-                                <b:inputText placeholder="Selecione uma cidade" />
-                            </b:column>
-                        </b:row>
-
-                    </b:column>
-                    <b:column col-xs="12" col-md="2">
-                        <b:button value="Pesquisar" icon="search" styleClass="width-100"></b:button>
-                    </b:column>
-                </b:row>
-            </h:form>
-            
-            <!--
-            <ui:repeat value="#{bean.links}" var="link" varStatus="status">
-                <h:outputLink value="#{link.url}">
-                    <h:outputLabel value="#{link.name}"/>
-                </h:outputLink>
-                <h:outputText value=", " rendered="#{not status.last}"/>
-            </ui:repeat>
-            -->
+            <ui:insert name="content"/>
                 
         </b:container>
         
-        <script src="assets/js/jquery-1.11.2.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/custom.js"></script>
+        <h:outputScript library="js" name="jquery-1.11.2.min.js" />
+        <h:outputScript library="js" name="bootstrap.min.js" />
+        <h:outputScript library="js" name="custom.js" />        
     </h:body>
 </html>
 
