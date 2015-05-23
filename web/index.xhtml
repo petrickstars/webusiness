@@ -5,33 +5,31 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-     >
-    
+      >
+
     <h:head>
         <title>Webusiness</title>
         <h:outputStylesheet library="css" name="bootstrap.min.css" />
         <h:outputStylesheet library="css" name="index.css" />
-        
+
     </h:head>
     <h:body>
-        
+
         <b:container>
-            
+
             <b:navBar id="topnav" brandHref="#">
                 <b:navbarLinks>
-                    <b:navLink value="PRINCIPAL" href="#{indexMB.irPara('/faces/view/principal.xhtml')}" active="true"></b:navLink>
-                    <b:navLink value="ANUNCIE AQUI" rendered="#{sessionScope.logado}" href="#{indexMB.irPara('/faces/view/anuncie-aqui.xhtml')}"></b:navLink>                   
-                    <b:navLink value="CADASTRE-SE"  href="#{indexMB.irPara('/faces/view/anunciante.xhtml')}"></b:navLink>
-                    <b:navLink value="ENTRAR" rendered="#{!sessionScope.logado}"  href="#{indexMB.irPara('/faces/view/login.xhtml')}"></b:navLink>
-                    <b:navLink value="SAIR" rendered="#{sessionScope.logado}"  href="#{indexMB.logout()}"></b:navLink>
+                    <b:navLink value="PRINCIPAL" outcome="/faces/view/principal.xhtml"  active="true"/>
+                    <b:navLink value="ANUNCIE AQUI" outcome="/faces/view/anuncie-aqui.xhtml" rendered="#{sessionScope.logado}" />                 
+                    <b:navLink value="CADASTRE-SE" outcome="/faces/view/anunciante.xhtml" />
+                    <b:navLink value="ENTRAR" outcome="/faces/view/login.xhtml" rendered="#{!sessionScope.logado}" />                    
                 </b:navbarLinks>
             </b:navBar>
-           
-            
+
             <ui:insert name="content"/>
-                
+
         </b:container>
-        
+
         <h:outputScript library="js" name="jquery-1.11.2.min.js" />
         <h:outputScript library="js" name="bootstrap.min.js" />
         <h:outputScript library="js" name="custom.js" />        
