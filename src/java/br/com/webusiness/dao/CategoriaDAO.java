@@ -6,18 +6,29 @@
 package br.com.webusiness.dao;
 
 import br.com.webusiness.model.Categoria;
+import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 
 /**
  *
  * @author PauloH
  */
-public class CategoriaDAO extends PadraoDAO<Categoria>{
+public class CategoriaDAO extends PadraoDAO<Categoria> {
 
     public CategoriaDAO(Session sessao) {
         super(sessao);
     }
-    
-    //TODO escrever os métodos aqui
-    
+
+   /**
+    * Lista todas as categorias ordenadas por descrição
+    * @return 
+    */
+    public List<Categoria> listar() {
+        Criteria criteria = super.sessao.createCriteria(Categoria.class);
+        criteria.addOrder(Order.asc("descricao"));
+        return criteria.list();
+    }
+
 }

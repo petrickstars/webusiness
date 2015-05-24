@@ -7,6 +7,36 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
    
     <ui:define name="content">
-       ANUNCIE AQUI
+        <h:form id="form">
+            <b:row>               
+                <b:column col-md="5">
+                    <h:outputText value="Nome:" />
+                    <b:inputText value="#{servicoMB.servico.nome}"  />
+                </b:column>                 
+            </b:row>
+            <b:row>
+                <b:column col-md="5">
+                    <h:outputText value="Descrição:" />
+                    
+                    <b:inputText value="#{servicoMB.servico.descricao}"  />
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:column col-md="3">
+                    <h:outputText value="Categoria:" />
+                    <h:selectOneMenu value="#{servicoMB.servico.categoria}"  >
+                        <f:selectItems itemLabel="#{categoria.descricao}" 
+                                       itemValue="#{categoria}"
+                                       value="#{servicoMB.categorias}"
+                                       var="categoria" />
+                    </h:selectOneMenu>
+                </b:column>
+            </b:row>
+          
+            <b:commandButton value="Salvar" 
+                             update="form"
+                             ajax="true"
+                             actionListener="#{servicoMB.salvar()}" />
+        </h:form>
     </ui:define>
 </ui:composition>
