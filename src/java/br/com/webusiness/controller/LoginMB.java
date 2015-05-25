@@ -50,9 +50,8 @@ public class LoginMB extends PadraoMB implements Serializable {
             usuarioDAO.iniciarTransacao();
             Usuario usuario = usuarioDAO.logar(this.login, this.senha);
             usuarioDAO.fecharTransacao();
-            if (usuario != null) {
-                //Para exibir o nome do usuário logado
-                insereObjNaSessao("usuario", usuario.getNome());
+            if (usuario != null) {               
+                insereObjNaSessao("usuario", usuario);
                 insereObjNaSessao("logado", true);
             } else {
                 Logger.getLogger(LoginMB.class.getName()).log(Level.SEVERE, null, "Usuário não logado!");

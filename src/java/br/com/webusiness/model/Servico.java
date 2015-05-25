@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -37,10 +38,9 @@ public class Servico implements Serializable {
     @OneToOne
     @JoinColumn(name = "idCategoria")
     private Categoria categoria;
-    @ManyToMany(mappedBy = "servicos")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @BatchSize(size = 10)
-    private List<Usuario> usuarios;
+    @ManyToOne
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
     @Version
     private int version;
 
@@ -79,12 +79,12 @@ public class Servico implements Serializable {
         this.categoria = categoria;
     }
 
-    public List<Usuario> getUsuarios() {
-        return usuarios;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public int getVersion() {
@@ -94,8 +94,6 @@ public class Servico implements Serializable {
     public void setVersion(int version) {
         this.version = version;
     }
-
-    
 
     @Override
     public int hashCode() {

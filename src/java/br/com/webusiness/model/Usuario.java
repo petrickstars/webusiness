@@ -82,18 +82,7 @@ public class Usuario implements Serializable {
     @Column(length = 12)
     private String login;
     @Column(length = 8)
-    private String senha;
-     @ManyToMany
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @JoinTable(name = "UsuarioServico",
-            joinColumns = {
-                @JoinColumn(name = "idUsuario")
-            },
-            inverseJoinColumns = {
-                @JoinColumn(name = "idServico")
-            })
-    @BatchSize(size = 10)  
-    private List<Servico> servicos;
+    private String senha;   
     @Version
     private int version;
 
@@ -298,15 +287,7 @@ public class Usuario implements Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public List<Servico> getServicos() {
-        return servicos;
-    }
-
-    public void setServicos(List<Servico> servicos) {
-        this.servicos = servicos;
-    }
+    }  
 
     public int getVersion() {
         return version;

@@ -5,6 +5,7 @@
  */
 package br.com.webusiness.controller;
 
+import br.com.webusiness.model.Usuario;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -69,5 +70,9 @@ public class PadraoMB {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
         session.invalidate();
+    }
+
+    public Usuario getUsuarioSessao() {
+        return (Usuario) this.getObjSessao("usuario");
     }
 }

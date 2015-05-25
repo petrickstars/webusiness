@@ -7,13 +7,12 @@ package br.com.webusiness.controller;
 
 import br.com.webusiness.dao.CategoriaDAO;
 import br.com.webusiness.dao.ServicoDAO;
-import br.com.webusiness.dao.UsuarioDAO;
 import br.com.webusiness.model.Categoria;
 import br.com.webusiness.model.Servico;
 import br.com.webusiness.model.Usuario;
-import br.com.webusiness.tipos.TipoUsuario;
 import br.com.webusiness.util.HibernateUtil;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,10 +26,11 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class ServicoMB implements Serializable {
+public class ServicoMB extends PadraoMB implements Serializable {
 
     private Servico servico;
     private List<Categoria> categorias;
+    private List<Servico> servicos;
 
     public ServicoMB() {
     }
@@ -47,10 +47,15 @@ public class ServicoMB implements Serializable {
         return categorias;
     }
 
+    public List<Servico> getServicos() {
+        return servicos;
+    }
+
     @PostConstruct
     public void init() {
         this.limparObjetos();
         this.listarCategorias();
+        this.listarServicos();
     }
 
     private void limparObjetos() {
@@ -69,25 +74,50 @@ public class ServicoMB implements Serializable {
         }
     }
 
+    private void listarServicos() {
+        try {
+            ServicoDAO servicoDAO = new ServicoDAO(HibernateUtil.getSession());
+            servicoDAO.iniciarTransacao();
+            this.servicos = servicoDAO.listar(getUsuarioSessao());
+            servicoDAO.fecharTransacao();
+            if (this.servicos == null) {
+                this.servicos = new ArrayList<>();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ServicoMB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void salvar() {
         try {
+            this.addUsuario();
             ServicoDAO servicoDAO = new ServicoDAO(HibernateUtil.getSession());
             servicoDAO.iniciarTransacao();
             servicoDAO.salvar(this.servico);
             servicoDAO.fecharTransacao();
+            this.servicos.add(this.servico);
             this.limparObjetos();
         } catch (Exception ex) {
             Logger.getLogger(ServicoMB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void excluir() {
+    /**
+     * Adiciona o usuário logado no serviço criado.
+     */
+    private void addUsuario() {
+        this.servico.setUsuario(getUsuarioSessao());
+    }
+
+    public void excluir(Servico servico) {
         try {
             ServicoDAO servicoDAO = new ServicoDAO(HibernateUtil.getSession());
             servicoDAO.iniciarTransacao();
-            servicoDAO.excluir(this.servico);
+            servicoDAO.excluir(servico);
             servicoDAO.fecharTransacao();
+            this.servicos.remove(servico);
             this.limparObjetos();
+
         } catch (Exception ex) {
             Logger.getLogger(ServicoMB.class.getName()).log(Level.SEVERE, null, ex);
         }
