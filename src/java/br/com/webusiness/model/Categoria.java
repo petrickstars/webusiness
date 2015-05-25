@@ -13,7 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-/**
+/** A classe contém os atributos id, descriçãoe e version, contém os métodos getId, setId, getDescricao, setDescricao,
+ * getVersion e setVersion
  *
  * @author paulohenrique
  */
@@ -23,34 +24,73 @@ public class Categoria implements Serializable {
 
     @Id
     @GeneratedValue
-    private long id;    
+    
+    /**Atributo id armazena o valor de identificação da categoria do serviço
+    * 
+    */
+    private long id;  
+    
+    /**Atributo descricao armazenara a descrição detalhada das caracteristicas das categoria do serviço
+    * 
+    */
     private String descricao;
+    
+    /**O hibernate controla a concorrência dos objetos usando o atributo version
+    * 
+    */
     @Version
     private int version;
-
+    
+    /**Método construtor da classe Categoria
+     * 
+     */
     public Categoria() {
     }
 
+    /**Método getId recebe o Identificador da categoria do serviço
+    *  
+    * @return Long - Valor do identificador da categoria do seviço
+    */
     public long getId() {
         return id;
     }
 
+    /**Método setId insere e/ou altera o valor do atributo id
+    * 
+    * @param id 
+    */
     public void setId(long id) {
         this.id = id;
     }   
 
+    /**Método getDescricao armazena a descrição da categoria do serviço
+    * 
+    * @return String - Descrição da categoria do serviço
+    */
     public String getDescricao() {
         return descricao;
     }
 
+    /**Método setDescricao insere e/ou altera a descrição da categoria do serviço
+     * 
+     * @param descricao 
+     */
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 
+    /**Metodo getVersion recebe o valor da versão do objeto
+    * 
+    * @return int - Número da versão 
+    */    
     public int getVersion() {
         return version;
     }
 
+    /**Metodo setVersion insere e/ou altera o valor da versão do objeto
+    * 
+    * @param version 
+    */    
     public void setVersion(int version) {
         this.version = version;
     }
