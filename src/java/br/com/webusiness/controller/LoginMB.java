@@ -7,6 +7,7 @@ package br.com.webusiness.controller;
 
 import br.com.webusiness.dao.UsuarioDAO;
 import br.com.webusiness.model.Usuario;
+import br.com.webusiness.tipos.TipoUsuario;
 import br.com.webusiness.util.HibernateUtil;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -50,9 +51,11 @@ public class LoginMB extends PadraoMB implements Serializable {
             usuarioDAO.iniciarTransacao();
             Usuario usuario = usuarioDAO.logar(this.login, this.senha);
             usuarioDAO.fecharTransacao();
-            if (usuario != null) {               
+            if (usuario != null) {
                 insereObjNaSessao("usuario", usuario);
                 insereObjNaSessao("logado", true);
+                //       insereObjNaSessao("admin", usuario.getTipoUsuario().equals(TipoUsuario.ADMINISTRADOR));
+                insereObjNaSessao("admin", true);
                 return "/faces/view/principal.xhtml";
             } else {
                 Logger.getLogger(LoginMB.class.getName()).log(Level.SEVERE, null, "Usuário não logado!");
@@ -64,5 +67,4 @@ public class LoginMB extends PadraoMB implements Serializable {
         return "";
     }
 
-   
 }

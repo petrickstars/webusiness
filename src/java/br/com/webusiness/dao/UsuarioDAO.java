@@ -6,8 +6,10 @@
 package br.com.webusiness.dao;
 
 import br.com.webusiness.model.Usuario;
+import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -25,6 +27,15 @@ public class UsuarioDAO extends PadraoDAO<Usuario> {
         criteria.add(Restrictions.eq("login", login));
         criteria.add(Restrictions.eq("senha", senha));
         return (Usuario) criteria.uniqueResult();
+    }
+
+    public List<Usuario> listar(String nome) {
+        Criteria criteria = super.sessao.createCriteria(Usuario.class);
+        if (nome != null && !nome.isEmpty()) {
+            criteria.add(Restrictions.like("nome", "%" + nome + "%"));
+        }
+        criteria.addOrder(Order.asc("nome"));
+        return criteria.list();
     }
 
 }
