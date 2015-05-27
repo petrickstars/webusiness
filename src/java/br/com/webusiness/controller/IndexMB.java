@@ -21,11 +21,6 @@ public class IndexMB extends PadraoMB implements Serializable {
 
     }
 
-    public String logout() {
-        removeObjSessao("usuario");
-        removeObjSessao("logado");
-        invalidarSessao();
-        return "/faces/view/principal.xhtml";
-    }
+    
 
 }

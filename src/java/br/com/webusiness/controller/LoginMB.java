@@ -44,7 +44,7 @@ public class LoginMB extends PadraoMB implements Serializable {
         this.senha = senha;
     }
 
-    public void logar() {
+    public String logar() {
         try {
             UsuarioDAO usuarioDAO = new UsuarioDAO(HibernateUtil.getSession());
             usuarioDAO.iniciarTransacao();
@@ -53,6 +53,7 @@ public class LoginMB extends PadraoMB implements Serializable {
             if (usuario != null) {               
                 insereObjNaSessao("usuario", usuario);
                 insereObjNaSessao("logado", true);
+                return "/faces/view/principal.xhtml";
             } else {
                 Logger.getLogger(LoginMB.class.getName()).log(Level.SEVERE, null, "Usuário não logado!");
             }
@@ -60,6 +61,7 @@ public class LoginMB extends PadraoMB implements Serializable {
         } catch (Exception ex) {
             Logger.getLogger(LoginMB.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return "";
     }
 
    

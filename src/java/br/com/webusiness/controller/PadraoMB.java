@@ -75,4 +75,9 @@ public class PadraoMB {
     public Usuario getUsuarioSessao() {
         return (Usuario) this.getObjSessao("usuario");
     }
+    
+    public String logout() {        
+        invalidarSessao();
+        return "/faces/view/principal.xhtml";
+    }
 }

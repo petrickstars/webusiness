@@ -17,12 +17,22 @@
 
         <b:container>
 
-            <b:navBar id="topnav" brandHref="#">
+            <b:navBar id="topnav" brandHref="#">                 
+
+                <h:form  rendered="#{sessionScope.logado}" >
+
+                    <h:outputText value="#{sessionScope.usuario.nome}" />
+                    <h:commandLink value="SAIR"  actionListener="#{indexMB.logout()}" 
+                                    />
+
+                </h:form>
+
                 <b:navbarLinks>
                     <b:navLink value="PRINCIPAL"  outcome="/faces/view/principal.xhtml"  active="true"/>
                     <b:navLink value="ANUNCIE AQUI" outcome="/faces/view/anuncie-aqui.xhtml" rendered="#{sessionScope.logado}" />                 
                     <b:navLink value="CADASTRE-SE" outcome="/faces/view/anunciante.xhtml" />
                     <b:navLink value="ENTRAR" outcome="/faces/view/login.xhtml" rendered="#{!sessionScope.logado}" />                    
+
                 </b:navbarLinks>
             </b:navBar>
 
