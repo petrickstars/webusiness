@@ -11,7 +11,7 @@
             <b:row>               
                 <b:column col-md="5">
                     <h:outputText value="Nome:" />
-                    <b:inputText value="#{servicoMB.servico.nome}"  />
+                    <b:inputText value="#{servicoMB.servico.nome}"  />                    
                 </b:column>                 
             </b:row>
             <b:row>
@@ -26,6 +26,7 @@
                     <h:outputText value="Categoria:" />
                     <h:selectOneMenu value="#{servicoMB.servico.categoria}" 
                                      class="form-control"
+                                     
                                      converter="omnifaces.SelectItemsConverter" >
                         <f:selectItems itemLabel="#{categoria.descricao}" 
                                        itemValue="#{categoria}"
@@ -60,11 +61,11 @@
                         <h:outputText value="#{servico.categoria.descricao}" />     
                     </h:column>
                     <h:column >
-                        <h:commandButton value="Excluir" 
-                                         type="submit"
-                                         actionListener="#{servicoMB.excluir(servico)}" >
-
-                        </h:commandButton>    
+                          <b:commandButton value="Excluir" 
+                             update="form"
+                             ajax="true"
+                             actionListener="#{servicoMB.excluir(servico)}" />
+                           
                     </h:column>
                 </h:dataTable>
             </b:row>
