@@ -54,8 +54,8 @@ public class LoginMB extends PadraoMB implements Serializable {
             if (usuario != null) {
                 insereObjNaSessao("usuario", usuario);
                 insereObjNaSessao("logado", true);
-                //       insereObjNaSessao("admin", usuario.getTipoUsuario().equals(TipoUsuario.ADMINISTRADOR));
-                insereObjNaSessao("admin", true);
+                insereObjNaSessao("admin", usuario.getTipoUsuario().equals(TipoUsuario.ADMINISTRADOR));
+              
                 return "/faces/view/principal.xhtml";
             } else {
                 Logger.getLogger(LoginMB.class.getName()).log(Level.SEVERE, null, "Usuário não logado!");
