@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-/**
+/** A classe Cidade será usada para armazenar as cidades referentes aos estados
  *
  * @author paulohenrique
  */
@@ -23,38 +23,77 @@ import javax.persistence.Version;
 @Table(name = "Cidade")
 public class Cidade implements Serializable {
 
+   /**Atributo id armazena o valor de identificação da cidade
+    * 
+    */
     @Id
     @GeneratedValue
     private long id;
     @Column(length = 50)
+    
+    /**Atributo nome armazena o nome da cidade
+    * 
+    */
     private String nome;
     @Column(length = 7)
+    
+    /**Atributo codIbge armazena o valor de identificação da cidade junto ao IBGE
+    * 
+    */
     private String codIbge;
     @OneToOne
+    
+    /**Atributo estado armazena o estado a qual a cidade pertence
+    * 
+    */
     @JoinColumn(name = "idEstado")
     private Estado estado;
+    
+   /**O hibernate controla a concorrência dos objetos usando o atributo version
+    * 
+    */
     @Version
     private int version;
 
+    /**Método construtor da classe Cidade
+     * 
+     */
     public Cidade() {
     }
 
+    /**Método getId recebe o Identificador da cidade
+    *  
+    * @return Long - Valor do identificador da cidade
+    */
     public long getId() {
         return id;
     }
 
+    /**Método setId insere e/ou altera o valor do atributo id
+    * 
+    * @param id 
+    */
     public void setId(long id) {
         this.id = id;
     }
 
+    /**Método getNome recebe o nome da cidade
+    * 
+    * @return String - Nome da cidade
+    */
     public String getNome() {
         return nome;
     }
 
+    /**Método setNome nsere e/ou altera o nome da cidade
+     * 
+     * @param nome 
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    
     public String getCodIbge() {
         return codIbge;
     }
