@@ -22,7 +22,7 @@
                 <h:form  rendered="#{sessionScope.logado}" >
 
                     <h:outputText value="#{sessionScope.usuario.nome}" />
-                    <h:commandLink value="SAIR"  actionListener="#{indexMB.logout()}" 
+                    <h:commandLink value="SAIR"  action="#{indexMB.logout()}" 
                                     />
 
                 </h:form>

@@ -61,6 +61,13 @@
                         <h:outputText value="#{servico.categoria.descricao}" />     
                     </h:column>
                     <h:column >
+                          <b:commandButton value="Alterar" 
+                             update="form"
+                             ajax="true"
+                              >
+                              <f:setPropertyActionListener target="#{servicoMB.servico}"
+                                                           value="#{servico}" />
+                          </b:commandButton>
                           <b:commandButton value="Excluir" 
                              update="form"
                              ajax="true"

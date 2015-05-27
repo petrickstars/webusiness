@@ -93,9 +93,11 @@ public class ServicoMB extends PadraoMB implements Serializable {
             this.addUsuario();
             ServicoDAO servicoDAO = new ServicoDAO(HibernateUtil.getSession());
             servicoDAO.iniciarTransacao();
-            servicoDAO.salvar(this.servico);
+            servicoDAO.salvarOuAtualizar(this.servico);
             servicoDAO.fecharTransacao();
-            this.servicos.add(this.servico);
+            if (!this.servicos.contains(this.servico)) {
+                this.servicos.add(this.servico);
+            }
             this.limparObjetos();
         } catch (Exception ex) {
             Logger.getLogger(ServicoMB.class.getName()).log(Level.SEVERE, null, ex);
