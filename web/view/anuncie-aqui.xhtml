@@ -25,6 +25,7 @@
                 <b:column col-md="3">
                     <h:outputText value="Categoria:" />
                     <h:selectOneMenu value="#{servicoMB.servico.categoria}" 
+                                     class="form-control"
                                      converter="omnifaces.SelectItemsConverter" >
                         <f:selectItems itemLabel="#{categoria.descricao}" 
                                        itemValue="#{categoria}"
