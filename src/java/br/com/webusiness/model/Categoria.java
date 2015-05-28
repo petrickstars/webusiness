@@ -98,8 +98,11 @@ public class Categoria implements Serializable {
     }
     
     
-
+    
     @Override
+     /**
+     * @inwrited
+     */
     public int hashCode() {
         int hash = 5;
         hash = 41 * hash + (int) (this.id ^ (this.id >>> 32));
