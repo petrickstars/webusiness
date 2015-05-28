@@ -51,10 +51,11 @@ public class Cidade implements Serializable {
     @JoinColumn(name = "idEstado")
     private Estado estado;
     
-   /**O hibernate controla a concorrência dos objetos usando o atributo version
+  
+    @Version
+     /**O hibernate controla a concorrência dos objetos usando o atributo version
     * 
     */
-    @Version
     private int version;
 
     /**Método construtor da classe Cidade
