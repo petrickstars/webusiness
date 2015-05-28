@@ -15,19 +15,21 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+
+@Entity(name = "Cidade")
+@Table(name = "Cidade")
 /** A classe Cidade será usada para armazenar as cidades referentes aos estados
  *
  * @author paulohenrique
  */
-@Entity(name = "Cidade")
-@Table(name = "Cidade")
 public class Cidade implements Serializable {
 
-   /**Atributo id armazena o valor de identificação da cidade
-    * 
-    */
+   
     @Id
     @GeneratedValue
+    /**Atributo id armazena o valor de identificação da cidade
+    * 
+    */
     private long id;
     @Column(length = 50)
     

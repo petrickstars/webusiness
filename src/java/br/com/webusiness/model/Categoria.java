@@ -13,13 +13,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+
+@Entity(name = "Categoria")
+@Table(name = "Categoria")
 /** A classe contém os atributos id, descriçãoe e version, contém os métodos getId, setId, getDescricao, setDescricao,
  * getVersion e setVersion
  *
  * @author paulohenrique
  */
-@Entity(name = "Categoria")
-@Table(name = "Categoria")
 public class Categoria implements Serializable {
 
     @Id
@@ -35,10 +36,11 @@ public class Categoria implements Serializable {
     */
     private String descricao;
     
+    
+    @Version
     /**O hibernate controla a concorrência dos objetos usando o atributo version
     * 
     */
-    @Version
     private int version;
     
     /**Método construtor da classe Categoria
