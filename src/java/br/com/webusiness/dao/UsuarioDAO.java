@@ -22,14 +22,14 @@ public class UsuarioDAO extends PadraoDAO<Usuario> {
         super(sessao);
     }
 
-    public Usuario logar(String login, String senha) {
+    public Usuario logar(String login, String senha) throws Exception{
         Criteria criteria = super.sessao.createCriteria(Usuario.class);
         criteria.add(Restrictions.eq("login", login));
         criteria.add(Restrictions.eq("senha", senha));
         return (Usuario) criteria.uniqueResult();
     }
 
-    public List<Usuario> listar(String nome) {
+    public List<Usuario> listar(String nome)throws Exception {
         Criteria criteria = super.sessao.createCriteria(Usuario.class);
         if (nome != null && !nome.isEmpty()) {
             criteria.add(Restrictions.like("nome", "%" + nome + "%"));

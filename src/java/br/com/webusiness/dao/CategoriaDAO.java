@@ -25,7 +25,7 @@ public class CategoriaDAO extends PadraoDAO<Categoria> {
     * Lista todas as categorias ordenadas por descrição
     * @return 
     */
-    public List<Categoria> listar() {
+    public List<Categoria> listar() throws Exception{
         Criteria criteria = super.sessao.createCriteria(Categoria.class);
         criteria.addOrder(Order.asc("descricao"));
         return criteria.list();

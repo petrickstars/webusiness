@@ -5,6 +5,8 @@
  */
 package br.com.webusiness.dao;
 
+import br.com.webusiness.model.Categoria;
+import br.com.webusiness.model.Cidade;
 import br.com.webusiness.model.Servico;
 import br.com.webusiness.model.Usuario;
 import java.util.List;
@@ -28,10 +30,26 @@ public class ServicoDAO extends PadraoDAO<Servico> {
      *
      * @param usuario
      * @return List<Servico> Ordenados pelo campo nome.
+     * @throws java.lang.Exception
      */
-    public List<Servico> listar(Usuario usuario) {
+    public List<Servico> listar(Usuario usuario) throws Exception {
         Criteria criteria = super.sessao.createCriteria(Servico.class);
         criteria.add(Restrictions.eq("usuario", usuario));
+        criteria.addOrder(Order.asc("nome"));
+        return criteria.list();
+    }
+
+    public List<Servico> listar(String nome, Categoria categoria, Cidade cidade) throws Exception {
+        Criteria criteria = super.sessao.createCriteria(Servico.class);
+        if (nome != null && !nome.isEmpty()) {
+            criteria.add(Restrictions.like("nome", "%" + nome + "%"));
+        }
+        if (categoria != null) {
+            criteria.add(Restrictions.eq("categoria", categoria));
+        }
+        if (cidade != null) {
+            criteria.add(Restrictions.eq("cidade", cidade));
+        }
         criteria.addOrder(Order.asc("nome"));
         return criteria.list();
     }

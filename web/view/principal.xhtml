@@ -3,37 +3,100 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="../index.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                 xmlns:b="http://bootsfaces.net/ui"
+                xmlns:b="http://bootsfaces.net/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
-   
+
     <ui:define name="content">
-        
-        <h:graphicImage id="logo" library="img" name="logo.png" />
-            <h:form>
-                <b:row>
-                    <b:column col-xs="12" col-md="6">
-                        <b:inputText placeholder="Pesquise um serviço..." />
-                    </b:column>
-                    <b:column col-xs="12" col-md="4">
 
-                        <b:row>
-                            <b:column col-xs="4">
-                                <select class="form-control">
-                                    <option>UF</option>
-                                </select>
-                            </b:column>
-                            <b:column col-xs="8">
-                                <b:inputText placeholder="Selecione uma cidade" />
-                            </b:column>
-                        </b:row>
+        <h:graphicImage id="logo"
+                        rendered="#{principalMB.pesquisando}"
+                        library="img" name="logo.png" />
+        <h:form id="pesquisa" rendered="#{principalMB.pesquisando}">
+            <b:row>
+                <b:column  col-md="4">
+                    <b:inputText placeholder="Pesquise um serviço..."
+                                 value="#{principalMB.nome}"/>
+                </b:column>
+                <b:column col-md="2">
+                    <h:selectOneMenu value="#{principalMB.categoria}" 
+                                     class="form-control"
 
-                    </b:column>
-                    <b:column col-xs="12" col-md="2">
-                        <b:button value="Pesquisar" icon="search" styleClass="width-100"></b:button>
-                    </b:column>
-                </b:row>
-            </h:form>          
-                          
-       
+                                     converter="omnifaces.SelectItemsConverter" >
+                        <f:selectItem itemLabel="Selecione uma categoria" />
+                        <f:selectItems itemLabel="#{categoria.descricao}" 
+                                       itemValue="#{categoria}"
+                                       value="#{principalMB.categorias}"
+                                       var="categoria" />
+                    </h:selectOneMenu>
+                </b:column>
+                <b:column col-md="2">
+                    <h:selectOneMenu value="#{principalMB.estado}" 
+                                     class="form-control"
+
+                                     converter="omnifaces.SelectItemsConverter" >
+                        <f:selectItem itemLabel="Selecione um estado" />
+                        <f:selectItems itemLabel="#{estado.nome}" 
+                                       itemValue="#{estado}"
+                                       value="#{principalMB.estados}"
+                                       var="estado" />
+                    </h:selectOneMenu>
+                </b:column>
+                <b:column col-md="2">
+                    <h:selectOneMenu value="#{principalMB.cidade}" 
+                                     class="form-control"
+
+                                     converter="omnifaces.SelectItemsConverter" >
+                        <f:selectItem itemLabel="Selecione uma cidade" />
+                        <f:selectItems itemLabel="#{cidade.nome}" 
+                                       itemValue="#{cidade}"
+                                       value="#{principalMB.cidades}"
+                                       var="cidade" />
+                    </h:selectOneMenu>
+                </b:column>
+
+                <b:column  col-md="2">
+                    <b:commandButton value="Pesquisar"
+                                     ajax="true"                                     
+                                     icon="search"
+                                     update="@all"
+                                     actionListener="#{principalMB.onClickButtonPesquisar()}"
+                                     />
+
+
+                </b:column>
+            </b:row>
+        </h:form>          
+
+
+        <h:form id="resultPesquisa" rendered="#{!principalMB.pesquisando}" >
+            <b:row>
+                <b:column col-md="2">
+                    <b:commandButton value="Voltar"
+                                     ajax="true"
+
+                                     update="@all"
+                                     actionListener="#{principalMB.onClickButtonVoltar()}"
+                                     />
+                </b:column>
+                
+            </b:row>
+            <b:row>
+                <table>
+                    <ui:repeat var="servico" value="#{principalMB.servicos}" >
+
+                        <tr>
+                            <td>#{servico.nome}</td>
+                            <td>#{servico.descricao}</td>
+                            <td>#{servico.categoria}</td>
+                            <td>#{servico.usuario.nome}</td>
+                        </tr>
+
+                    </ui:repeat>
+
+                </table>
+            </b:row>
+
+        </h:form >
+
     </ui:define>
 </ui:composition>
