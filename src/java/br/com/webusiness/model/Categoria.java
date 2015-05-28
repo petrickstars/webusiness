@@ -101,7 +101,7 @@ public class Categoria implements Serializable {
     
     @Override
      /**
-     * @inwrited
+     * @inherited
      */
     public int hashCode() {
         int hash = 5;
