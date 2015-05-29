@@ -33,19 +33,23 @@
                     <b:column col-md="2">
                         <h:selectOneMenu value="#{principalMB.estado}" 
                                          class="form-control"
-
+                                         id="estado"
                                          converter="omnifaces.SelectItemsConverter" >
                             <f:selectItem itemLabel="Selecione um estado" />
                             <f:selectItems itemLabel="#{estado.nome}" 
                                            itemValue="#{estado}"
                                            value="#{principalMB.estados}"
                                            var="estado" />
+                            <f:ajax event="change" 
+                                    execute="estado"
+                                    listener="#{principalMB.listarCidades()}"
+                                    render="cidade"/>
                         </h:selectOneMenu>
                     </b:column>
                     <b:column col-md="2">
                         <h:selectOneMenu value="#{principalMB.cidade}" 
                                          class="form-control"
-
+                                         id="cidade"
                                          converter="omnifaces.SelectItemsConverter" >
                             <f:selectItem itemLabel="Selecione uma cidade" />
                             <f:selectItems itemLabel="#{cidade.nome}" 
