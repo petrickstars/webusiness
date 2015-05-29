@@ -57,15 +57,13 @@
 
                     <b:column  col-md="2">
 
-                        <h:commandButton value="Pesquisar"                                         
-                                         >
-                            <f:ajax execute="pesquisa" 
-
-                                    listener="#{principalMB.onClickButtonPesquisar()}"
-                                    render="pesquisa resultPesquisa"
-                                    />
-                        </h:commandButton>
-
+                        <b:commandButton value="Pesquisar"
+                                         icon="search"
+                                         ajax="true"
+                                         actionListener="#{principalMB.onClickButtonPesquisar()}"
+                                         update="pesquisa resultPesquisa"
+                                         />
+                           
                     </b:column>
                 </b:row>
 
@@ -76,14 +74,12 @@
 
                 <b:row>
                     <b:column col-md="2">
-                        <h:commandButton value="Voltar"                                         
-                                         >
-                            <f:ajax execute="@this" 
-
-                                    listener="#{principalMB.onClickButtonVoltar()}"
-                                    render="pesquisa resultPesquisa"
-                                    />
-                        </h:commandButton>
+                        <b:commandButton value="Voltar" 
+                                         ajax="true"
+                                         update="pesquisa resultPesquisa"
+                                         actionListener="#{principalMB.onClickButtonVoltar()}"
+                                        />
+                           
                     </b:column>
 
                 </b:row>
