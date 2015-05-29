@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 import org.hibernate.Session;
@@ -101,6 +102,7 @@ public class PrincipalMB extends PadraoMB implements Serializable {
 
     @PostConstruct
     public void init() {
+        System.err.println("---------------------Passou Aqui-----------------");
         this.listarObjetos();
         this.pesquisando = true;
     }

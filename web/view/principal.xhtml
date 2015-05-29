@@ -8,95 +8,103 @@
 
     <ui:define name="content">
 
-        <h:graphicImage id="logo"
-                        rendered="#{principalMB.pesquisando}"
-                        library="img" name="logo.png" />
-        <h:form id="pesquisa" rendered="#{principalMB.pesquisando}">
-            <b:row>
-                <b:column  col-md="4">
-                    <b:inputText placeholder="Pesquise um serviço..."
-                                 value="#{principalMB.nome}"/>
-                </b:column>
-                <b:column col-md="2">
-                    <h:selectOneMenu value="#{principalMB.categoria}" 
-                                     class="form-control"
+        <h:form  id="pesquisa" >
+            <b:row rendered="#{principalMB.pesquisando}" >
+                <h:graphicImage id="logo"                           
+                                library="img" name="logo.png" />
 
-                                     converter="omnifaces.SelectItemsConverter" >
-                        <f:selectItem itemLabel="Selecione uma categoria" />
-                        <f:selectItems itemLabel="#{categoria.descricao}" 
-                                       itemValue="#{categoria}"
-                                       value="#{principalMB.categorias}"
-                                       var="categoria" />
-                    </h:selectOneMenu>
-                </b:column>
-                <b:column col-md="2">
-                    <h:selectOneMenu value="#{principalMB.estado}" 
-                                     class="form-control"
+                <b:row>
+                    <b:column  col-md="4">
+                        <b:inputText placeholder="Pesquise um serviço..."
+                                     value="#{principalMB.nome}"/>
+                    </b:column>
+                    <b:column col-md="2">
+                        <h:selectOneMenu value="#{principalMB.categoria}" 
+                                         class="form-control"
 
-                                     converter="omnifaces.SelectItemsConverter" >
-                        <f:selectItem itemLabel="Selecione um estado" />
-                        <f:selectItems itemLabel="#{estado.nome}" 
-                                       itemValue="#{estado}"
-                                       value="#{principalMB.estados}"
-                                       var="estado" />
-                    </h:selectOneMenu>
-                </b:column>
-                <b:column col-md="2">
-                    <h:selectOneMenu value="#{principalMB.cidade}" 
-                                     class="form-control"
+                                         converter="omnifaces.SelectItemsConverter" >
+                            <f:selectItem itemLabel="Selecione uma categoria" />
+                            <f:selectItems itemLabel="#{categoria.descricao}" 
+                                           itemValue="#{categoria}"
+                                           value="#{principalMB.categorias}"
+                                           var="categoria" />
+                        </h:selectOneMenu>
+                    </b:column>
+                    <b:column col-md="2">
+                        <h:selectOneMenu value="#{principalMB.estado}" 
+                                         class="form-control"
 
-                                     converter="omnifaces.SelectItemsConverter" >
-                        <f:selectItem itemLabel="Selecione uma cidade" />
-                        <f:selectItems itemLabel="#{cidade.nome}" 
-                                       itemValue="#{cidade}"
-                                       value="#{principalMB.cidades}"
-                                       var="cidade" />
-                    </h:selectOneMenu>
-                </b:column>
+                                         converter="omnifaces.SelectItemsConverter" >
+                            <f:selectItem itemLabel="Selecione um estado" />
+                            <f:selectItems itemLabel="#{estado.nome}" 
+                                           itemValue="#{estado}"
+                                           value="#{principalMB.estados}"
+                                           var="estado" />
+                        </h:selectOneMenu>
+                    </b:column>
+                    <b:column col-md="2">
+                        <h:selectOneMenu value="#{principalMB.cidade}" 
+                                         class="form-control"
 
-                <b:column  col-md="2">
-                    <b:commandButton value="Pesquisar"
-                                     ajax="true"                                     
-                                     icon="search"
-                                     update="@all"
-                                     actionListener="#{principalMB.onClickButtonPesquisar()}"
-                                     />
+                                         converter="omnifaces.SelectItemsConverter" >
+                            <f:selectItem itemLabel="Selecione uma cidade" />
+                            <f:selectItems itemLabel="#{cidade.nome}" 
+                                           itemValue="#{cidade}"
+                                           value="#{principalMB.cidades}"
+                                           var="cidade" />
+                        </h:selectOneMenu>
+                    </b:column>
 
+                    <b:column  col-md="2">
 
-                </b:column>
+                        <h:commandButton value="Pesquisar"                                         
+                                         >
+                            <f:ajax execute="pesquisa" 
+
+                                    listener="#{principalMB.onClickButtonPesquisar()}"
+                                    render="pesquisa resultPesquisa"
+                                    />
+                        </h:commandButton>
+
+                    </b:column>
+                </b:row>
+
             </b:row>
-        </h:form>          
+        </h:form>
+        <h:form  id="resultPesquisa"  >
+            <b:row rendered="#{!principalMB.pesquisando}">
+
+                <b:row>
+                    <b:column col-md="2">
+                        <h:commandButton value="Voltar"                                         
+                                         >
+                            <f:ajax execute="@this" 
+
+                                    listener="#{principalMB.onClickButtonVoltar()}"
+                                    render="pesquisa resultPesquisa"
+                                    />
+                        </h:commandButton>
+                    </b:column>
+
+                </b:row>
+                <b:row>
+                    <table>
+                        <ui:repeat var="servico" value="#{principalMB.servicos}" >
+
+                            <tr>
+                                <td>#{servico.nome}</td>
+                                <td>#{servico.descricao}</td>
+                                <td>#{servico.categoria.descricao}</td>
+                                <td>#{servico.usuario.nome}</td>
+                            </tr>
+
+                        </ui:repeat>
+
+                    </table>
+                </b:row>
 
 
-        <h:form id="resultPesquisa" rendered="#{!principalMB.pesquisando}" >
-            <b:row>
-                <b:column col-md="2">
-                    <b:commandButton value="Voltar"
-                                     ajax="true"
-
-                                     update="@all"
-                                     actionListener="#{principalMB.onClickButtonVoltar()}"
-                                     />
-                </b:column>
-                
             </b:row>
-            <b:row>
-                <table>
-                    <ui:repeat var="servico" value="#{principalMB.servicos}" >
-
-                        <tr>
-                            <td>#{servico.nome}</td>
-                            <td>#{servico.descricao}</td>
-                            <td>#{servico.categoria}</td>
-                            <td>#{servico.usuario.nome}</td>
-                        </tr>
-
-                    </ui:repeat>
-
-                </table>
-            </b:row>
-
         </h:form >
-
     </ui:define>
 </ui:composition>
