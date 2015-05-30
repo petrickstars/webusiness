@@ -35,6 +35,10 @@ public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue
+    
+    /**
+     * 
+     */
     private long id;
     @Column(length = 50)
     private String nome;
@@ -88,7 +92,11 @@ public class Usuario implements Serializable {
 
     public Usuario() {
     }
-
+    
+    /**Metodo getId recebe o identificador do usuário
+    * 
+    * @return Long - Valor que identifica o usuário 
+    */
     public long getId() {
         return id;
     }
@@ -100,7 +108,11 @@ public class Usuario implements Serializable {
     public String getNome() {
         return nome;
     }
-
+    
+    /**
+     * 
+     * @param nome 
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
