@@ -99,9 +99,9 @@ public class Categoria implements Serializable {
     
     
     
-    @Override
-     /**
-     * @inherited
+    @Override  
+    /**
+     * {@inheritDoc}
      */
     public int hashCode() {
         int hash = 5;
@@ -110,6 +110,9 @@ public class Categoria implements Serializable {
     }
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
