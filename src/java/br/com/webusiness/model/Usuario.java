@@ -25,17 +25,16 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import br.com.webusiness.tipos.TipoUsuario;
 
+@Entity(name = "Usuario")
+@Table(name = "Usuario")
 /**
  *
  * @author paulohenrique
  */
-@Entity(name = "Usuario")
-@Table(name = "Usuario")
 public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue
-    
     /**
      * 
      */
