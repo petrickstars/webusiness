@@ -25,7 +25,6 @@ public class Categoria implements Serializable {
 
     @Id
     @GeneratedValue
-    
     /**Atributo id armazena o valor de identificação da categoria do serviço
     * 
     */
