@@ -18,42 +18,43 @@ import javax.persistence.Version;
 
 @Entity(name = "Cidade")
 @Table(name = "Cidade")
-/** A classe Cidade será usada para armazenar as cidades referentes aos estados
+/** A classe Cidade é usada para manipular os dados referentes as cidades.
  *
  * @author paulohenrique
  */
 public class Cidade implements Serializable {
 
-   
-    @Id
-    @GeneratedValue
-    /**Atributo id armazena o valor de identificação da cidade
+   /**Atributo id armazena o valor de identificação da cidade
     * 
     */
+    @Id
+    @GeneratedValue
+    /**Atributo id armazena o valor de identificação da cidade.
+     * 
+     */
     private long id;
-    @Column(length = 50)
     
+    @Column(length = 50)
     /**Atributo nome armazena o nome da cidade
     * 
     */
     private String nome;
-    @Column(length = 7)
     
-    /**Atributo codIbge armazena o valor de identificação da cidade junto ao IBGE
+    @Column(length = 7)
+        /**Atributo codIbge armazena o valor de identificação da cidade junto ao IBGE
     * 
     */
     private String codIbge;
-    @OneToOne
     
+    @OneToOne
+    @JoinColumn(name = "idEstado")
     /**Atributo estado armazena o estado a qual a cidade pertence
     * 
     */
-    @JoinColumn(name = "idEstado")
     private Estado estado;
     
-  
     @Version
-     /**O hibernate controla a concorrência dos objetos usando o atributo version
+    /**O hibernate controla a concorrência dos objetos usando o atributo version
     * 
     */
     private int version;
@@ -88,7 +89,7 @@ public class Cidade implements Serializable {
         return nome;
     }
 
-    /**Método setNome nsere e/ou altera o nome da cidade
+    /**Método setNome insere e/ou altera o nome da cidade
      * 
      * @param nome 
      */
@@ -96,11 +97,18 @@ public class Cidade implements Serializable {
         this.nome = nome;
     }
 
-    
+    /**Método getCodIbge recebe o código IBGE da cidade
+     * 
+     * @return String - Código do IBGE 
+     */
     public String getCodIbge() {
         return codIbge;
     }
 
+    /**
+     * 
+     * @param codIbge 
+     */
     public void setCodIbge(String codIbge) {
         this.codIbge = codIbge;
     }

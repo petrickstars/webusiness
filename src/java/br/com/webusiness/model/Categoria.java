@@ -16,8 +16,7 @@ import javax.persistence.Version;
 
 @Entity(name = "Categoria")
 @Table(name = "Categoria")
-/** A classe contém os atributos id, descriçãoe e version, contém os métodos getId, setId, getDescricao, setDescricao,
- * getVersion e setVersion.
+/** A classe Categoria é usada para manipular os dados das categorias dos serviços.
  *
  * @author paulohenrique
  */

@@ -27,7 +27,7 @@ import br.com.webusiness.tipos.TipoUsuario;
 
 @Entity(name = "Usuario")
 @Table(name = "Usuario")
-/**
+/**A classe Usuario é usada para manipular os dados dos registros dos usuários (anunciantes ou administrador).
  *
  * @author paulohenrique
  */
@@ -35,64 +35,167 @@ public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue
-    /**
+    /** O atributo id armazena o valor de identificação do usuário.
      * 
      */
     private long id;
+    
     @Column(length = 50)
+    /** O atributo nome armazena o nome do usuário.
+     * 
+     */
     private String nome;
+    
     @Column(length = 60)
+    /** O atributo endereco armazena o endereço do usuário.
+     * 
+     */
     private String endereco;
+    
     @Column(length = 15)
+    /** O atributo numero armazena o número da residência do usuário.
+     * 
+     */
     private String numero;
+    
     @Column(length = 30)
+    /** O atributo bairro armazena o bairro onde o usuário reside.
+     * 
+     */
     private String bairro;
+    
     @OneToOne
     @JoinColumn(name = "idCidade")
+    /** O objeto cidade armazena a cidade onde o usuário reside.
+     * 
+     */
     private Cidade cidade;
+    
+    /** O objeto TipoUsuario armazena o tipo de usuário que o usuário é (usuário administrador ou usuário normal).
+     * 
+     */
     private TipoUsuario tipoUsuario;
+    
     @Column(length = 14)
+    /** O aAtributo cpfOuCnpj armazena o CPF ou o CNPJ do usuário.
+     * 
+     */
     private String cpfOuCnpj;
+    
     @Column(length = 10)
+    /** O atributo telefoneFixo armazena o telefone fixo do usuário.
+     * 
+     */
     private String telefoneFixo;
+    
     @Column(length = 11)
+    /** O atributo telefoneCelular armazena o telefone celular do usuário.
+     * 
+     */
     private String telefoneCelular;
+    
+    /** O atributo ativo armazena a informação se o usuário esta ativo.
+     * 
+     */
     private boolean ativo;
+    
+    /** O atributo bloqueado armazena se o usuário esta bloqueado.
+     * 
+     */
     private boolean bloqueado;
+    
     @Column(length = 8)
+    /** O atributo cep armazena o CEP do usuário.
+     * 
+     */
     private String cep;
+    
     @Column(length = 50)
+    /** O atributo email armazena o email do usuário.
+     * 
+     */
     private String email;
+    
     @Column(length = 50)
+    /** O atributo email2 armazena um email alternativo do usuário.
+     * 
+     */
     private String email2;
+    
     @Column(length = 30)
+    /** O atributo complemento armazena o complemento do endereçõ do usuário.
+     * 
+     */
     private String complemento;
+    
     @Column(columnDefinition = "timestamp default current_timestamp")
     @Temporal(TemporalType.TIMESTAMP)
+    /** O atributo dataCadastro armazena a data do cadastro do usuário.
+     * 
+     */
     private Date dataCadastro;
+    
     @Column(length = 12)
+    /** O atributo rg armazena o RG (Regitro Geral) do usuário.
+     * 
+     */
     private String rg;
+    
     @Column(length = 11)
+    /** O atributo cnh armazena o número da CNH (Carteira Nacional de Habilitação) do usuário.
+     * 
+     */
     private String cnh;
+    
     @Column(length = 2)
+    /** O atributo tipoCnh armazena a categoria da CNH (Carteira Nacional de Habilitação) do usuário.
+     * 
+     */
     private String tipoCnh;
+    
     @Column(length = 40)
+    /** O atributo rasãoSocial armazena a rasão social da empresa do usuário se houver.
+     * 
+     */
     private String razaoSocial;
+    
     @Column(length = 1)
+    /** O atributo sexo armazena o sexo do usuário.
+     * 
+     */
     private String sexo;
+    
     @Column(length = 30)
+    /** O atributo site armazena o site do usuário.
+     * 
+     */
     private String site;
+    
     @Column(length = 12)
+    /** O atributo login armazena o login do usuário.
+     * 
+     */
     private String login;
+    
     @Column(length = 8)
+    /** O atributo senha armazena o senha do usuário.
+     * 
+     */
     private String senha;   
+    
     @Version
+    /** O hibernate controla a concorrência dos objetos usando o atributo version.
+     * 
+     */
     private int version;
 
+     /** Método construtor da classe Usuário.
+     * 
+     */
     public Usuario() {
     }
     
-    /**Metodo getId recebe o identificador do usuário
+    /** Metodo getId recebe o identificador do usuário
     * 
     * @return Long - Valor que identifica o usuário 
     */
