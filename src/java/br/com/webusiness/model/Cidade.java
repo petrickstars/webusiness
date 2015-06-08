@@ -24,9 +24,6 @@ import javax.persistence.Version;
  */
 public class Cidade implements Serializable {
 
-   /**Atributo id armazena o valor de identificação da cidade
-    * 
-    */
     @Id
     @GeneratedValue
     /**Atributo id armazena o valor de identificação da cidade.
@@ -67,7 +64,7 @@ public class Cidade implements Serializable {
 
     /**Método getId recebe o Identificador da cidade
     *  
-    * @return Long - Valor do identificador da cidade
+    * @return Long - O valor do identificador da cidade
     */
     public long getId() {
         return id;
@@ -81,15 +78,15 @@ public class Cidade implements Serializable {
         this.id = id;
     }
 
-    /**Método getNome recebe o nome da cidade
+    /** O método getNome recebe o nome da cidade
     * 
-    * @return String - Nome da cidade
+    * @return String - o nome da cidade
     */
     public String getNome() {
         return nome;
     }
 
-    /**Método setNome insere e/ou altera o nome da cidade
+    /** O método setNome insere e/ou altera o nome da cidade
      * 
      * @param nome 
      */
@@ -97,15 +94,15 @@ public class Cidade implements Serializable {
         this.nome = nome;
     }
 
-    /**Método getCodIbge recebe o código IBGE da cidade
+    /** O método getCodIbge recebe o código IBGE da cidade
      * 
-     * @return String - Código do IBGE 
+     * @return String - O código do IBGE 
      */
     public String getCodIbge() {
         return codIbge;
     }
 
-    /**
+    /** O métogo setCodIbge insere e/ou altera o número do código do IBGE referente a cidade.
      * 
      * @param codIbge 
      */
@@ -113,24 +110,43 @@ public class Cidade implements Serializable {
         this.codIbge = codIbge;
     }
 
+     /** O método getEstado recebe o estado.
+     * 
+     * @return String - O estado
+     */
     public Estado getEstado() {
         return estado;
     }
 
+    /** O métogo setEstado insere e/ou altera o estado.
+     * 
+     * @param estado  
+     */
     public void setEstado(Estado estado) {
         this.estado = estado;
     }    
     
 
+     /** O metodo getVersion recebe o valor da versão do objeto
+     * 
+     * @return int - Número da versão 
+     */   
     public int getVersion() {
         return version;
     }
 
+    /** O metodo setVersion insere e/ou altera o valor da versão do objeto
+     * 
+     * @param version 
+     */ 
     public void setVersion(int version) {
         this.version = version;
     }
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public int hashCode() {
         int hash = 5;
         hash = 41 * hash + (int) (this.id ^ (this.id >>> 32));
@@ -138,6 +154,9 @@ public class Cidade implements Serializable {
     }
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;

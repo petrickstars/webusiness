@@ -79,7 +79,7 @@ public class Categoria implements Serializable {
         this.descricao = descricao;
     }
 
-    /**Metodo getVersion recebe o valor da versão do objeto
+    /** O metodo getVersion recebe o valor da versão do objeto
      * 
      * @return int - Número da versão 
      */    
@@ -87,7 +87,7 @@ public class Categoria implements Serializable {
         return version;
     }
 
-    /**Metodo setVersion insere e/ou altera o valor da versão do objeto
+    /** O metodo setVersion insere e/ou altera o valor da versão do objeto
      * 
      * @param version 
      */    

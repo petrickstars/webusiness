@@ -76,7 +76,7 @@ public class ServicoRegistro implements Serializable {
         return id;
     }
 
-     /**Método setId insere e/ou altera o valor do atributo id
+     /** O método setId insere e/ou altera o valor do atributo id
      * 
      * @param id 
      */
@@ -84,7 +84,7 @@ public class ServicoRegistro implements Serializable {
         this.id = id;
     }
 
-    /**Método getServico recebe o serviço inserido pelo anunciante.
+    /** O método getServico recebe o serviço inserido pelo anunciante.
      *  
      * @return servico - Retorna o objeto seviço.
      */
@@ -92,7 +92,7 @@ public class ServicoRegistro implements Serializable {
         return servico;
     }
 
-    /**Método setServico insere e/ou altera o valor do objeto servico.
+    /** O método setServico insere e/ou altera o valor do objeto servico.
      * 
      * @param servico 
      */
@@ -100,7 +100,7 @@ public class ServicoRegistro implements Serializable {
         this.servico = servico;
     }
 
-    /**Método getUsuarioCliente recebe o usuario(cliente) do serviço.
+    /** O método getUsuarioCliente recebe o usuario(cliente) do serviço.
      *  
      * @return usuarioCliente - Retorna o objeto usuarioCliente.
      */
@@ -108,7 +108,7 @@ public class ServicoRegistro implements Serializable {
         return usuarioCliente;
     }
 
-    /**Método setUsuarioCliente insere e/ou altera o valor do objeto usuarioCliente.
+    /** O método setUsuarioCliente insere e/ou altera o valor do objeto usuarioCliente.
      * 
      * @param usuarioCliente 
      */
@@ -116,7 +116,7 @@ public class ServicoRegistro implements Serializable {
         this.usuarioCliente = usuarioCliente;
     }
 
-    /**Método getUsuarioAnunciante recebe o usuario(anunciante) do serviço.
+    /** O método getUsuarioAnunciante recebe o usuario(anunciante) do serviço.
      *  
      * @return usuarioAnunciante - Retorna o objeto asuarioAnunciante.
      */
@@ -124,7 +124,7 @@ public class ServicoRegistro implements Serializable {
         return usuarioAnunciante;
     }
 
-    /**Método setUsuarioCliente insere e/ou altera o valor do objeto usuarioCliente.
+    /** O método setUsuarioCliente insere e/ou altera o valor do objeto usuarioCliente.
      * 
      * @param usuarioAnunciante 
      */
@@ -132,7 +132,7 @@ public class ServicoRegistro implements Serializable {
         this.usuarioAnunciante = usuarioAnunciante;
     }
 
-    /**Método getClassificacao recebe a classificacao do serviço.
+    /** O método getClassificacao recebe a classificacao do serviço.
      *  
      * @return classificacao - Retorna o objeto classificacao.
      */
@@ -140,7 +140,7 @@ public class ServicoRegistro implements Serializable {
         return classificacao;
     }
 
-    /**Método setClassificacao insere e/ou altera o valor do objeto classificacao.
+    /** O método setClassificacao insere e/ou altera o valor do objeto classificacao.
      * 
      * @param classificacao
      */
@@ -148,7 +148,7 @@ public class ServicoRegistro implements Serializable {
         this.classificacao = classificacao;
     }
 
-    /**Metodo getVersion recebe o valor da versão do objeto
+    /** O metodo getVersion recebe o valor da versão do objeto
      * 
      * @return int - Número da versão 
      */   
@@ -156,7 +156,7 @@ public class ServicoRegistro implements Serializable {
         return version;
     }
 
-    /**Metodo setVersion insere e/ou altera o valor da versão do objeto
+    /** O metodo setVersion insere e/ou altera o valor da versão do objeto
      * 
      * @param version 
      */  
@@ -164,20 +164,22 @@ public class ServicoRegistro implements Serializable {
         this.version = version;
     }
     
+    
+    @Override
     /**
      * {@inheritDoc}
      */
-    @Override
     public int hashCode() {
         int hash = 5;
         hash = 41 * hash + (int) (this.id ^ (this.id >>> 32));
         return hash;
     }
 
+   
+    @Override
     /**
      * {@inheritDoc}
      */
-    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
